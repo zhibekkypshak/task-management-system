@@ -14,3 +14,18 @@ class ReportGenerator:
             else:
                 print("No completed tasks")
 
+    def generate_priority_task_report(self):
+        high=0
+        medium=0
+        low=0
+        for task in self.tasks:
+            if task["status"]=="high":
+                high+=1
+            elif task["status"]=="medium":
+                medium+=1
+            elif task["status"]=="low":
+                low+=1
+        print("\nHigh priority tasks report:")
+        print("High priority tasks:"+str(high))
+        print("Medium priority tasks:"+str(medium))
+        print("Low priority tasks:"+str(low))
