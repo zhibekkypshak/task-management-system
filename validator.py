@@ -59,7 +59,3 @@ class Validator:
             return False
  
         return True
- 
-
-
- 
