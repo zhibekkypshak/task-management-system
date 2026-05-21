@@ -22,8 +22,12 @@ class TaskManager:
                 return task
         return None
 
-    def edit_task(self, task_id, new_title=None, new_priority=None, new_deadline=None, new_status=None):
-        task=self.find_task(task_id)
+    def edit_task(self, task_id,
+                  new_title=None,
+                  new_priority=None,
+                  new_deadline=None,
+                  new_status=None):
+        task = self.find_task(task_id)
         if task:
             if new_title:
                 task["title"] = new_title
@@ -50,14 +54,19 @@ class TaskManager:
             "medium": 2,
             "low": 3
         }
-        self.tasks.sort(key=lambda task:(priority_order[task["priority"]], task["deadline"]))
+        (self.tasks.sort(
+            key=lambda task:(
+                priority_order[task["priority"]],
+                task["deadline"]
+            )
+        ))
         print("Sorted tasks")
 
     def show_overdue_tasks(self):
         today=datetime.today()
-        overdue_tasks=[]
+        overdue_tasks = []
         for task in self.tasks:
-            deadline=datetime.strptime(task["deadline"], "%Y-%m-%d")
+            deadline = datetime.strptime(task["deadline"], "%Y-%m-%d")
             if deadline < today and task["status"] != "completed":
                 overdue_tasks.append(task)
         if overdue_tasks:
@@ -82,16 +91,16 @@ class TaskManager:
             1 for task in self.tasks
             if task["status"] == "in_progress"
         )
-        if total_tasks>0:
-            completion_rate=(completed_tasks/total_tasks)*100
+        if total_tasks > 0:
+            completion_rate = (completed_tasks/total_tasks)*100
         else:
-            completion_rate=0
+            completion_rate = 0
         print("\nTask statistics")
-        print("Total tasks:"+str(total_tasks))
-        print("Completed tasks:"+str(completed_tasks))
-        print("Pending tasks:"+str(pending_tasks))
-        print("In-progress tasks:"+str(in_progress_tasks))
-        print("Completion rate:"+str(completion_rate))
+        print("Total tasks:" + str(total_tasks))
+        print("Completed tasks:" + str(completed_tasks))
+        print("Pending tasks:" + str(pending_tasks))
+        print("In-progress tasks:" + str(in_progress_tasks))
+        print("Completion rate:" + str(completion_rate))
 
 
 
