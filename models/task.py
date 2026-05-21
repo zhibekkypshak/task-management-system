@@ -43,3 +43,15 @@ class Task:
             if deadline:
                 self.deadline = deadline
             
+        def dict(self):
+            return {"id": self.id, "title": self.title, "description": self.description, "priority": self.priority, "deadline": self.deadline, "status": self.__status}
+        
+        @classmethod 
+        def obj(c, data):
+            return c(data["id"], data["title"], data["description"], data["priority"], data["deadline"], data["status"]
+            )
+        
+        class subtask(Task):
+            def __init__(self, task_id, title, description, priority, deadline, status="pending"):
+                super().__init__(task_id, title, description, priority, deadline, status)
+                self.important = True
