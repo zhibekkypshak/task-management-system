@@ -58,6 +58,43 @@ def delete_task(tasks):
         print("Invalid ID.")
 
 
+def edit_task(tasks):
+    show_tasks(tasks)
+    try:
+        task_id =int(input("Enter task ID too edit: "))
+        task = next((t for t in tasks if t["id"] ==task_id),None)
+        if not task:
+            print("Task not found.")
+            return
+
+        print("Leave blank to keep current value.")
+        title = input(f"Title [{task['title']}]: ").strip()
+        priority = input(f"Priority [{task['priority']}]: ").strip()
+        deadline = input(f"Deadline [{task['deadline']}]: ").strip()
+        status = input(f"Status [{task['status']}]: ").strip()
+
+        try:
+            if priority:
+                Validator.validate_priority(priority)
+                task["priority"] = priority
+            if deadline :
+                Validator.validate_deadline(deadline)
+                task["deadline"]= deadline
+            if title:
+                task["task"]=title
+            if status:
+                Validator.validate_status(status)
+                task["status"]=status
+            print("Task updated!")
+
+        except ValueError as e:
+            print(f"Error: {e}")
+    except ValueError:
+        print("Invalid ID.")
+
+
+
+
 
 
 
