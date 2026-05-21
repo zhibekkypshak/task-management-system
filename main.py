@@ -11,5 +11,32 @@ def show_menu():
     print("0. Exit")
     return input("Choose: ").strip()
 
+def add_task(tasks):
+    title = input("Title: ").strip()
+    priority = input("Priority (low/medium/high: ").strip()
+    deadline = input("Deadline (YYYY-MM-DD): ").strip()
+
+    try:
+        Validator.validate_priority(priority)
+        Validator.validate_deadline(deadline)
+
+        task = {
+            "id": len(tasks) + 1,
+            "tittle":title,
+            "description":"",
+            "priority": priority,
+            "deadline":deadline,
+            "status": "pending"
+        }
+        tasks.append(task)
+        print("Task added!")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+
+
+
+
 
 
