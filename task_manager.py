@@ -66,6 +66,33 @@ class TaskManager:
         else:
             print("No overdue tasks found")
 
+    def show_statistics(self):
+        def show_statistics(self):
+            total_tasks = len(self.tasks)
+
+            completed_tasks = sum(
+                1 for task in self.tasks
+                if task["status"] == "completed"
+            )
+            pending_tasks = sum(
+                1 for task in self.tasks
+                if task["status"] == "pending"
+            )
+            in_progress_tasks = sum(
+                1 for task in self.tasks
+                if task["status"] == "in_progress"
+            )
+            if total_tasks>0:
+                completion_rate=(completed_tasks/total_tasks)*100
+            else:
+                completion_rate=0
+            print("\nTask statistics")
+            print("Total tasks:"+str(total_tasks))
+            print("Completed tasks:"+str(completed_tasks))
+            print("Pending tasks:"+str(pending_tasks))
+            print("In-progress tasks:"+str(in_progress_tasks))
+            print("Completion rate:"+str(completion_rate))
+
 
 
 
