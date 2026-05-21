@@ -8,10 +8,10 @@ class Task:
 
         self.__status = status
 
-        def get_status(self):
+    def get_status(self):
             return self.__status
         
-        def set_status(self, new_status):
+    def set_status(self, new_status):
             allowed_statuses = [
                 "pending",
                 "in_progress",
@@ -24,23 +24,23 @@ class Task:
                 print("invalid status")
 
         
-        def mark_completed(self):
+    def mark_completed(self):
             self.__status = "completed"
 
-        def update_task(self, title = None,
+    def update_task(self, title = None,
                         description = None,
                         priority = None,
                         deadline = None):
-            if title:
+        if title:
                 self.title = title
 
-            if description:
+        if description:
                 self.description = description
 
-            if priority:
+        if priority:
                 self.priority = priority
             
-            if deadline:
+        if deadline:
                 self.deadline = deadline
             
         def dict(self):
