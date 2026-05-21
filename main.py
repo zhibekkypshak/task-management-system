@@ -34,6 +34,18 @@ def add_task(tasks):
     except ValueError as e:
         print(f"Error: {e}")
 
+def show_tasks(tasks):
+    if not tasks:
+        print("No tasks found.")
+        return
+    for task in tasks:
+        print(f"\n[{task['id']}] {task['title']}")
+        print(f"    Priority: {task['priority']}")
+        print(f"    Deadline: {task['deadline']}")
+        print(f"    Status:    {task['status']}")
+
+
+
 
 
 
