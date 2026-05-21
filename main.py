@@ -44,6 +44,19 @@ def show_tasks(tasks):
         print(f"    Deadline: {task['deadline']}")
         print(f"    Status:    {task['status']}")
 
+def delete_task(tasks):
+    show_tasks(tasks)
+    try:
+        task_id = int(input("Enter task ID to delete: "))
+        task = next((t for t in tasks if t["id"] == task_id), None)
+        if task:
+            tasks.remove(task)
+            print("Task deleted!")
+        else:
+            print("Task not found.")
+    except ValueError:
+        print("Invalid ID.")
+
 
 
 
