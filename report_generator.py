@@ -29,3 +29,27 @@ class ReportGenerator:
         print("High priority tasks:"+str(high))
         print("Medium priority tasks:"+str(medium))
         print("Low priority tasks:"+str(low))
+
+    def generate_pending_report(self):
+        pending_tasks=[
+            task for task in self.tasks
+            if task["status"]=="pending"
+        ]
+        print("\nPending tasks report:")
+        if pending_tasks:
+            for task in pending_tasks:
+                print(task)
+            else:
+                print("No pending tasks")
+
+    def generate_in_progress_report(self):
+        in_progress_tasks=[
+            task for task in self.tasks
+            if task["status"]=="in_progress"
+        ]
+        print("\nIn-progress tasks report:")
+        if in_progress_tasks:
+            for task in in_progress_tasks:
+                print(task)
+            else:
+                print("No in-progress tasks")
