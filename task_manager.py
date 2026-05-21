@@ -1,9 +1,10 @@
 from datetime import datetime
+
 class TaskManager:
     def __init__(self):
         self.tasks = []
 
-    def add(self, task):
+    def add_task(self, task):
         self.tasks.append(task)
         print("Task added")
 
@@ -57,7 +58,7 @@ class TaskManager:
         overdue_tasks=[]
         for task in self.tasks:
             deadline=datetime.strptime(task["deadline"], "%Y-%m-%d")
-            if deadline < today and task["status"] != "completd":
+            if deadline < today and task["status"] != "completed":
                 overdue_tasks.append(task)
         if overdue_tasks:
             print("\nOverdue tasks")
@@ -67,31 +68,30 @@ class TaskManager:
             print("No overdue tasks found")
 
     def show_statistics(self):
-        def show_statistics(self):
-            total_tasks = len(self.tasks)
+        total_tasks = len(self.tasks)
 
-            completed_tasks = sum(
-                1 for task in self.tasks
-                if task["status"] == "completed"
-            )
-            pending_tasks = sum(
-                1 for task in self.tasks
-                if task["status"] == "pending"
-            )
-            in_progress_tasks = sum(
-                1 for task in self.tasks
-                if task["status"] == "in_progress"
-            )
-            if total_tasks>0:
-                completion_rate=(completed_tasks/total_tasks)*100
-            else:
-                completion_rate=0
-            print("\nTask statistics")
-            print("Total tasks:"+str(total_tasks))
-            print("Completed tasks:"+str(completed_tasks))
-            print("Pending tasks:"+str(pending_tasks))
-            print("In-progress tasks:"+str(in_progress_tasks))
-            print("Completion rate:"+str(completion_rate))
+        completed_tasks = sum(
+            1 for task in self.tasks
+            if task["status"] == "completed"
+        )
+        pending_tasks = sum(
+            1 for task in self.tasks
+            if task["status"] == "pending"
+        )
+        in_progress_tasks = sum(
+            1 for task in self.tasks
+            if task["status"] == "in_progress"
+        )
+        if total_tasks>0:
+            completion_rate=(completed_tasks/total_tasks)*100
+        else:
+            completion_rate=0
+        print("\nTask statistics")
+        print("Total tasks:"+str(total_tasks))
+        print("Completed tasks:"+str(completed_tasks))
+        print("Pending tasks:"+str(pending_tasks))
+        print("In-progress tasks:"+str(in_progress_tasks))
+        print("Completion rate:"+str(completion_rate))
 
 
 
