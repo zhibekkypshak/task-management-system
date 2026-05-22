@@ -22,7 +22,7 @@ def add_task(tasks):
 
         task = {
             "id": len(tasks) + 1,
-            "tittle":title,
+            "title":title,
             "description":"",
             "priority": priority,
             "deadline":deadline,
@@ -62,7 +62,7 @@ def edit_task(tasks):
     show_tasks(tasks)
     try:
         task_id =int(input("Enter task ID too edit: "))
-        task = next((t for t in tasks if t["id"] ==task_id),None)
+        task = next((t for t in tasks if t["id"] == task_id),None)
         if not task:
             print("Task not found.")
             return
@@ -81,7 +81,7 @@ def edit_task(tasks):
                 Validator.validate_deadline(deadline)
                 task["deadline"]= deadline
             if title:
-                task["task"]=title
+                task["title"]=title
             if status:
                 Validator.validate_status(status)
                 task["status"]=status
