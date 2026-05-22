@@ -93,6 +93,29 @@ def edit_task(tasks):
         print("Invalid ID.")
 
 
+def show_statistics(tasks):
+    if not tasks:
+        print("No tasks found.")
+        return
+    total = len(tasks)
+    completed = sum(1 for t in tasks if t["status"] == "completed")
+    in_progress = sum(1 for t in tasks if t["status"] == "in_progress")
+    pending = sum(1 for t in tasks if t ["status"] == "pending")
+
+    high = sum(1 for t in tasks if t["priority"] == "high")
+    medium = sum (1 for t in tasks if t["priority"] == "medium")
+    low = sum(1 for t in tasks if t["priority"] == "low")
+
+    print("\n=== Statistics ===")
+    print(f"Total tasks:    {total}")
+    print(f"Completed:      {completed}")
+    print(f"In progress:    {in_progress}")
+    print(f"Pending:        {pending}")
+    print(f"\nHigh priority:    {high}")
+    print(f"Medium priority: {medium}")
+    print(f"Low priority:    {low}")
+
+
 
 
 
