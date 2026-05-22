@@ -116,6 +116,32 @@ def show_statistics(tasks):
     print(f"Low priority:    {low}")
 
 
+def run():
+    fm = FileManager()
+    tasks = fm.load_from_file()
+
+    while True:
+        choice = show_menu()
+
+        if choice == "1":
+            add_task(tasks)
+        elif choice == "2":
+            edit_task(tasks)
+        elif choice == "3":
+            delete_task(tasks)
+        elif choice == "4":
+            show_tasks(tasks)
+        elif choice == "5":
+            show_statistics(tasks)
+        elif choice == "0":
+            fm.save_to_file(tasks)
+            print("Saved.Goodbye!")
+            break
+        else:
+            print("Invalid choice. Try again.")
+if __name__=="__main__":
+    run()
+
 
 
 
